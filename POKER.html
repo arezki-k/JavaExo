@@ -1,0 +1,573 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head><style></style>
+                                        
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+                                        
+  <meta name="GENERATOR" content="Mozilla/4.7 [en] (X11; I; SunOS 5.7 sun4u) [Netscape]">
+                                        
+  <meta name="Author" content="Yann Secq">
+  <title>Sixième semaine</title>
+<script type="text/javascript" src="POKER_fichiers/main.js" charset="UTF-8"></script><style>@media print {#ghostery-tracker-tally {display:none !important}}</style></head>
+  <body vlink="#cc0000" text="#000000" link="#3333ff" bgcolor="#b0b0d0" alink="#ff0000">
+                    
+<center>          
+<h1> <a name="Quatrieme_semaine"></a>
+ Sixième semaine</h1>
+  </center>
+   
+<h2>  
+<center>Le Jeu de Poker !</center>
+  </h2>
+   
+<h2>  
+<center>       </center>
+  </h2>
+                    
+<center>          
+<h2> </h2>
+       </center>
+             
+<center>  </center>
+                    
+<center>         
+<table cols="3" nosave="" width="90%" bgcolor="#e0e0d0">
+          <tbody>
+             <tr nosave="">
+          <td nosave="" width="15%">                                    
+                           
+      <center><b><a href="#Exercice_1">Exercice 1</a>
+        </b></center>
+          </td>
+           <td>Définition de la classe <big><tt>Carte</tt></big>.</td>
+           <td nosave="" width="6%"><a href="http://www.lifl.fr/~ysecq/IUT/COO/td6/Carte.java">Carte.java</a>
+      </td>
+          </tr>
+        <tr>
+          <td valign="Top">                            
+      <center><b><a href="#Exercice_2">Exercice 2</a>
+      </b></center>
+          </td>
+          <td valign="Top">Représentons maintenant les <big><tt>Combinaison</tt></big>
+  s de <big><tt>Carte</tt></big>s ...<br>
+          </td>
+          <td valign="Top"><a href="http://www.lifl.fr/~ysecq/IUT/COO/td6/Paire.java">Paire.java</a>
+      <br>
+      <a href="http://www.lifl.fr/~ysecq/IUT/COO/td6/Brelan.java">Brelan.java</a>
+      <br>
+      <a href="http://www.lifl.fr/~ysecq/IUT/COO/td6/Poker.java">Poker.java</a>
+      <br>
+      <a href="http://www.lifl.fr/~ysecq/IUT/COO/td6/CinqCartes.java">CinqCartes.java</a>
+      <br>
+      <a href="http://www.lifl.fr/~ysecq/IUT/COO/td6/Quinte.java">Quinte.java</a>
+      <br>
+      <a href="http://www.lifl.fr/~ysecq/IUT/COO/td6/Flush.java">Flush.java</a>
+      <br>
+      <a href="http://www.lifl.fr/~ysecq/IUT/COO/td6/QuinteFlush.java">QuinteFlush.java</a>
+      <br>
+      <a href="http://www.lifl.fr/~ysecq/IUT/COO/td6/DeuxPaires.java">DeuxPaires.java<br>
+      </a>
+      <a href="http://www.lifl.fr/~ysecq/IUT/COO/td6/Full.java">Full.java</a>
+      <br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="Top">                            
+      <center><b><a href="#Exercice_3">Exercice 3</a>
+      </b></center>
+          </td>
+          <td valign="Top">Il ne nous reste maintenant plus qu'à représenter
+ une <big><tt>Main</tt></big> !<br>
+          </td>
+          <td valign="Top"><a href="http://www.lifl.fr/~ysecq/IUT/COO/td6/Main.java">Main.java</a>
+      <br>
+      <a href="http://www.lifl.fr/~ysecq/IUT/COO/td6/Application.java">Application.java</a>
+      <br>
+          </td>
+        </tr>
+                                                                    
+  </tbody>         
+</table>
+         </center>
+                <br>
+  Le Poker est un jeu de cartes se jouant à plusieurs joueurs (3 à
+ 7) avec un jeu de 52 cartes ou avec un jeu de 32 s'il n'y a pas beaucoup
+de joueurs. L'ordre des cartes est le suivant : <i>as, roi, dame, valet,
+dix, neuf, huit, sept, six, cinq, quatre, trois, deux</i>. Dans certaines
+combinaisons l'as peut compter après le deux. Les combinaisons de
+jeu sont les suivantes, chacune d'elles étant battue par celle qui
+lui est immédiatement supérieure, voici les combinaisons (en
+ordre croissant) :<br>
+   
+<ul>
+    <li>une carte,</li>
+    <li>une <b>paire</b>, deux cartes de même valeur,</li>
+    <li>deux paires,</li>
+    <li>un <b>brelan</b>, trois cartes de même valeur,</li>
+    <li>une <b>quinte ou séquence</b>, cinq cartes qui se suivent
+et  dans laquelle l'as peut compter après le deux,</li>
+    <li>un <b>flush</b>, cinq cartes de la même couleur,</li>
+    <li>un <b>full ou un plein</b>, composé d'un brelan et d'une paire,</li>
+    <li>un <b>poker ou carré</b>, quatre cartes de même valeur,</li>
+    <li>une <b>quinte flush</b>, cinq cartes de même couleur et qui 
+se suivent et dans laquelle l'as peut compter après le deux.</li>
+   
+</ul>
+  La valeur d'une combinaison est celle de sa plus forte carte, à
+valeur  égale, les quintes à coeur l'emportent sur celles d'une
+autre  couleur. Pour les combinaisons multiples (deux paires et full) la
+valeur dépends des deux combinaisons.<br>
+  <br>
+  Le donneur distribue cinq cartes à chaque joueur. Les joueurs qui
+ ne sont pas satisfait de leur jeu peuvent écarter, un maximum de
+trois  cartes, et recevoir de nouvelles cartes. Le joueur qui gagne est celui
+ayant  la plus forte combinaison (il peut y avoir égalité).<br>
+    <br>
+       
+<hr width="100%">           
+<p> </p>
+          <a name="Exercice_1"></a>
+  <b>Exercice 1 :</b> <br>
+  <br>
+  On a besoin d'une classe pour représenter une carte. On se limitera
+ ici aux seules fontionnalitées nécessaires pour le jeu de
+Poker.  On représente généralement une carte avec deux
+attributs  entiers: un pour la valeur et un pour la couleur. Ce qui donne
+un squelette  de classe <big><tt>Carte</tt></big> :<br>
+  <br>
+   
+<div align="Center">  
+<table width="90%" cellspacing="2" cellpadding="2" border="0">
+    <tbody>
+      <tr>
+        <td valign="Top" bgcolor="#ffffcc"><tt>class Carte {<br>
+  &nbsp; &nbsp; static final int PIQUE=0, TREFLE=1, CARREAU=2, COEUR=3;<br>
+  &nbsp; &nbsp; static final int AS=12, ROI=11, DAME=10, VALET=9, DIX=8,
+NEUF=7,  HUIT=6, SEPT=5, SIX=4, CINQ=3, QUATRE=2, TROIS=1, DEUX=0;<br>
+        <br>
+  	&nbsp; &nbsp; protected int couleur, valeur;   // couleur valeur<br>
+  	&nbsp; &nbsp; protected boolean marque = false; // marque<br>
+  &nbsp; &nbsp; ...<br>
+  }</tt>        </td>
+        </tr>
+               
+  </tbody>    
+</table>
+    </div>
+  <br>
+  Les constantes définissent l'ordre des cartes : AS&gt;ROI, ROI&gt;DAME
+ ... TROIS&gt;DEUX,(DEUX&gt;AS)<br>
+  <br>
+  Compléter la classe Carte avec:<br>
+   
+<ul>
+    <li>un constructeur avec deux paramètres entiers : <i>valeur</i>
+   et <i>couleur</i>.</li>
+    <li>deux méthodes d'accès, en lecture, aux attributs :
+    <i>  valeur()</i> et <i>couleur()</i></li>
+    <li>une méthode d'affichage, redéfinissant <i>toString()</i>
+  , affichant une carte le mieux possible, par exemple:    <b>roi de pique</b></li>
+   
+</ul>
+  On aura besoin par la suite de trier des cartes en ordre décroissant.<br>
+   
+<ul>
+    <li>Ajouter à la classe <big><tt>Carte</tt></big> une méthode
+     <big><tt>estInferieureA(Carte carte)</tt></big>, à résultat
+     <b>booléen</b>, comparant la carte courante à la carte
+passée en paramètre, la comparaison ne se fait que sur les
+valeurs ; le résultat sera vrai si et seulement si la carte courante
+est <u>strictement inférieure</u>  à la carte en paramètre.</li>
+   
+</ul>
+  Dans ce qui suit on aura besoin de marquer les cartes pour ne pas les utiliser
+ plusieurs fois dans une combinaison. Une carte marquée a son attribut
+ <big><tt>marque</tt></big> égal à vrai, sinon il est égal
+ à faux.<br>
+  <br>
+  Compléter la classe <big><tt>Carte</tt></big> avec:<br>
+   
+<ul>
+    <li>une méthode <big><tt>marquer()</tt></big> forçant la
+ marque à vrai</li>
+    <li>une méthode d'accès <big><tt>estMarque()</tt></big>
+ retournant la marque</li>
+   
+</ul>
+  <u>Indication :</u> <i>La marque n'apparait pas dans l'affichage des cartes.</i><br>
+    <br>
+       
+<hr width="100%" size="2"><br>
+    <a name="Exercice_2"></a>
+<b>Exercice 2 :</b><br>
+    <br>
+  Il faut maintenant des classes pour représenter les combinaisons,
+ il y a trois sortes de combinaisons :<br>
+   
+<ul>
+    <li> des combinaisons avec <b>2 à 4 cartes</b> de même valeur
+ : <b>paire, brelan et poker</b>.</li>
+    <li> des combinaisons de <b>5 cartes</b> (qui se suivent, qui ont même
+ couleur) : <b>quinte, flush ou quinte flush</b>.</li>
+    <li> des combinaisons de combinaisons : <b>deux paires ou full</b>.</li>
+   
+</ul>
+   Le cas une carte n'est pas vu comme une combinaison.<br>
+   <br>
+   <b>Combinaisons avec 2 à 4 cartes de même valeur</b><br>
+   <br>
+   Une paire est composée de deux cartes, ce qui donne un squelette
+ de classe <big><tt>Paire</tt></big> :<br>
+  <br>
+     
+<div align="Center">  
+<table width="90%" cellspacing="2" cellpadding="2" border="0">
+    <tbody>
+      <tr>
+        <td valign="Top" bgcolor="#ffffcc"> <tt>class Paire { <br>
+  &nbsp; &nbsp; // carte + carte (de meme valeur)<br>
+    	&nbsp; &nbsp; Carte c1, c2;<br>
+    	&nbsp; &nbsp; ...<br>
+    }</tt><br>
+        <tt></tt>        </td>
+        </tr>
+               
+  </tbody>    
+</table>
+    </div>
+  <br>
+  Ajouter à la classe <big><tt>Paire</tt></big> :<br>
+   
+<ul>
+    <li> un constructeur à deux paramètres cartes,</li>
+    <li> un constructeur à un paramètre paire,</li>
+    <li> une méthode d'affichage, exemple :   Paire (7 de coeur,7
+de  carreau).<br>
+    </li>
+   
+</ul>
+   Un brelan est une paire plus une carte :<br>
+   
+<ul>
+    <li> écrire une classe <big><tt>Brelan</tt></big> héritant
+ de la classe <big><tt>Paire</tt></big>, la classe <big><tt>Brelan</tt></big>
+   comportera un attribut carte, un constructeur à trois paramètres
+ cartes, un constructeur à un paramètre brelan et une méthode
+ d'affichage.<br>
+    </li>
+   
+</ul>
+   Un poker est un brelan plus une carte :<br>
+   
+<ul>
+    <li> écrire une classe <big><tt>Poker</tt></big> héritant
+ de la classe <big><tt>Brelan</tt></big>, la classe <big><tt>Poker</tt></big>
+   comportera un attribut carte, un constructeur à quatre paramètres
+ cartes et une méthode d'affichage.<br>
+    </li>
+   
+</ul>
+   <b>Combinaisons de 5 cartes</b><br>
+   <br>
+   Une classe de base est bien pratique, soit <big><tt>CinqCartes</tt></big>
+   cette classe dont voici le squelette :<br>
+  <br>
+     
+<div align="Center">  
+<table width="90%" cellspacing="2" cellpadding="2" border="0">
+    <tbody>
+      <tr>
+        <td valign="Top" bgcolor="#ffffcc">        <tt>class CinqCartes { 
+      <br>
+  &nbsp; &nbsp; // classe de base pour Quinte et Flush<br>
+  &nbsp; &nbsp; Carte c1, c2, c3, c4, c5;<br>
+    	&nbsp; &nbsp; ...<br>
+    }</tt><br>
+           </td>
+        </tr>
+               
+  </tbody>    
+</table>
+    </div>
+  <br>
+   Ajouter à la classe <big><tt>CinqCartes</tt></big> :<br>
+   
+<ul>
+    <li> un constructeur à 5 paramètres cartes</li>
+    <li> une méthode <big><tt>cartesToString()</tt></big> retournant
+ une chaîne de caractères avec toutes les cartes (ce n'est pas
+ ici la méthode <big><tt>toString()</tt></big>, pour des problèmes
+ liés à l'héritage il faut un autre nom), exemple :
+  (7 de coeur, 6 de trefle, 5 de carreau, 4 de trefle, 3 de trefle).</li>
+   
+</ul>
+   <br>
+   Une quinte c'est cinq cartes qui se suivent, c'est donc <big><tt>CinqCartes</tt></big>
+   particulières :<br>
+   
+<ul>
+    <li> écrire une classe <big><tt>Quinte</tt></big> héritant
+ de la classe <big><tt>CinqCartes</tt></big>, la classe <big><tt>Quinte</tt></big>
+   comportera un constructeur (à cinq paramètres cartes) et 
+une méthode d'affichage.<br>
+    </li>
+   
+</ul>
+   Un flush c'est cinq cartes de la même couleur, c'est donc <big><tt>
+  CinqCartes</tt></big> particulières :<br>
+   
+<ul>
+    <li> écrire une classe <big><tt>Flush</tt></big> héritant
+ de la classe <big><tt>CinqCartes</tt></big>, la classe <big><tt>Flush</tt></big>
+   comportera un constructeur (à cinq paramètres cartes) et 
+une méthode d'affichage.<br>
+    </li>
+   
+</ul>
+   Une quinte flush est une quinte avec les cinq cartes de la même
+couleur,  c'est donc une quinte particulière :<br>
+   
+<ul>
+    <li> écrire une classe <big><tt>QuinteFlush</tt></big> héritant
+ de la classe <big><tt>Quinte</tt></big>, la classe <big><tt>QuinteFlush</tt></big>
+   comportera un constructeur (à cinq paramètres cartes) et 
+une méthode d'affichage.</li>
+   
+</ul>
+   <b>Combinaisons de combinaisons</b><br>
+   <br>
+   Deux paires c'est une paire plus une paire :<br>
+   
+<ul>
+    <li> écrire une classe <big><tt>DeuxPaires</tt></big> héritant
+ de la classe <big><tt>Paire</tt></big>, la classe <big><tt>DeuxPaires</tt></big>
+   comportera un attribut paire, un constructeur (à deux paramètres
+ paires) et une méthode d'affichage.<br>
+    </li>
+   
+</ul>
+   Un full c'est un brelan plus une paire :<br>
+   
+<ul>
+    <li> écrire une classe <big><tt>Full</tt></big> héritant
+ de la classe <big><tt>Brelan</tt></big>, la classe <big><tt>Full</tt></big>
+   comportera un attribut paire, un constructeur (à deux paramètres
+ brelan et paire) et une méthode d'affichage.          
+    <center></center>
+   <br>
+    </li>
+   
+</ul>
+       
+<hr width="100%" size="2">    
+<p><a name="Exercice_3"></a>
+<b>Exercice 3 :</b><br>
+    </p>
+       
+<p>La main d'un joueur, c'est à dire les cartes qu'il peut jouer,
+est réalisée par une classe <big><tt>Main</tt></big>. La main
+mémorise cinq cartes, voici le squelette de cette classe :<br>
+   </p>
+   
+<div align="Center">   
+<table width="90%" cellspacing="2" cellpadding="2" border="0">
+     <tbody>
+       <tr>
+         <td valign="Top" bgcolor="#ffffcc"><tt></tt> <tt>class Main {<br>
+    	&nbsp; &nbsp; Carte c1,c2,c3,c4,c5;<br>
+    	&nbsp; &nbsp; ...<br>
+    	&nbsp; &nbsp; public void trier() {  // tri par la methode des bulles<br>
+    		&nbsp; &nbsp; &nbsp; &nbsp; Carte c;<br>
+    		&nbsp; &nbsp; &nbsp; &nbsp; if (c1.estInferieureA(c2)) { c=c1; c1=c2;
+ c2=c; } // 1<br>
+    		&nbsp; &nbsp; &nbsp; &nbsp; if (c2.estInferieureA(c3)) { c=c2; c2=c3;
+ c3=c; }<br>
+    		&nbsp; &nbsp; &nbsp; &nbsp; if (c3.estInferieureA(c4)) { c=c3; c3=c4;
+ c4=c; }<br>
+    		&nbsp; &nbsp; &nbsp; &nbsp; if (c4.estInferieureA(c5)) { c=c4; c4=c5;
+ c5=c; }<br>
+    		&nbsp; &nbsp; &nbsp; &nbsp; if (c1.estInferieureA(c2)) { c=c1; c1=c2;
+ c2=c; } // 2<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; if (c2.estInferieureA(c3)) { c=c2; c2=c3; c3=c;
+ }<br>
+    		&nbsp; &nbsp; &nbsp; &nbsp; if (c3.estInferieureA(c4)) { c=c3; c3=c4;
+ c4=c; }<br>
+    		&nbsp; &nbsp; &nbsp; &nbsp; if (c1.estInferieureA(c2)) { c=c1; c1=c2;
+ c2=c; } // 3<br>
+    		&nbsp; &nbsp; &nbsp; &nbsp; if (c2.estInferieureA(c3)) { c=c2; c2=c3;
+ c3=c; }<br>
+    		&nbsp; &nbsp; &nbsp; &nbsp; if (c1.estInferieureA(c2)) { c=c1; c1=c2;
+ c2=c; } // 4<br>
+    	&nbsp; &nbsp; }<br>
+    }</tt><br>
+         </td>
+       </tr>
+           
+  </tbody>   
+</table>
+   </div>
+   
+<p><br>
+   Pour faciliter l'écriture des méthodes sur la main, les
+cartes  seront mémorisées dans l'ordre décroissant.
+La méthode  <big><tt>trier()</tt></big> trie les cartes dans cet ordre.<br>
+   <br>
+   Compléter la classe <big><tt>Main</tt></big> avec:<br>
+  </p>
+   
+<ul>
+    <li> un constructeur avec 5 paramètres cartes,</li>
+    <li> un constructeur avec 1 paramètre vecteur de cartes,</li>
+    <li> une méthode d'affichage, redéfinissant <big><tt>toString()</tt></big>
+  , par exemple : <tt>Main (roi de pique, dix de pique, dix de coeur, dix 
+de trefle, six de pique)</tt>.</li>
+   
+</ul>
+   
+<p> Les constructeurs trieront les cartes, en utilisant la méthode
+ <big><tt>trier()</tt></big>.<br>
+   <br>
+   Il s'agit maintenant d'extraire d'une main les combinaisons qui s'y trouvent.
+ Pour cela il faut quelques méthodes ; ajouter à la classe
+Main  :<br>
+  </p>
+   
+<ul>
+    <li> une méthode <big><tt>memeCouleur()</tt></big>, à résultat
+     <b>booléen</b>, testant si toutes les cartes de la main courante
+ sont de la même couleur,</li>
+    <li> une méthode <big><tt>suiteDecroissante()</tt></big>, à
+ résultat <b>booléen</b>, testant si toutes les cartes, de
+la  main courante, se suivent ; ne pas oublier que l'as peut compter après
+ le deux (si cela s'avère trop compliqué ne pas tenir compte
+ de cette règle particulière)<br>
+    </li>
+   
+</ul>
+   
+<p> Extraire les brelans et les paires c'est plus difficile, car il peut
+y avoir un brelan et une paire ou deux paires ; de plus dans un brelan on
+peut trouver deux paires. Il va donc falloir "marquer" les cartes utilisées
+ pour un brelan ou une paire pour ne pas les réutiliser dans une autre
+ paire.<br>
+   <br>
+   Les deux méthodes qui suivent recherchent si la main courante contient
+ les cartes nécessaires pour un brelan ou une paire et dans ce cas
+retournent une instance de la classe Brelan ou de la clase Paire contenant
+les bonnes cartes.<br>
+   <br>
+   Ajouter à la classe <big><tt>Main</tt></big> :<br>
+  </p>
+   
+<ul>
+    <li> une méthode <big><tt>brelan()</tt></big>, à résultat
+     <big><tt>Brelan</tt></big>, testant si la main courante contient un
+brelan  et retournant ce brelan (les trois cartes d'un brelan sont consécutives)
+ ; s'il n'y a pas de brelan retourner <i>null</i>. Ne pas oublier de marquer
+ les cartes utilisées.</li>
+    <li> une méthode <big><tt>paire()</tt></big>, à résultat
+     <big><tt>Paire</tt></big>, testant si la main courante contient une
+paire  et retournant cette paire (les deux cartes d'une paire sont consécutives)
+ ; s'il n'y a pas de paire retourner <i>null</i>. Ne pas utiliser les cartes
+ déja marquées et ne pas oublier de marquer les cartes utilisées.<br>
+    </li>
+   
+</ul>
+   
+<p>Il ne reste plus qu'a extraire la plus forte combinaison de la main. Il
+ faut donc les tester l'une après l'autre dans l'ordre : quinte flush,
+ poker, full, flush, quinte, brelan, deux paires, paire ou carte.<br>
+   <br>
+   Ajouter à la classe <big><tt>Main</tt></big> :<br>
+   * une méthode <big><tt>extraire()</tt></big>, à résultat
+ <big><tt>Object</tt></big>, recherchant dans la main courante la plus forte
+ combinaison et retournant une instance de cette combinaison (contenant les
+ bonnes cartes). Pour le cas une carte on retournera la plus forte carte.<br>
+   <br>
+  <u><i> NB:</i></u>   <i>Le polymorphisme d'affectation est utilisé
+ pour cette méthode.</i><br>
+    </p>
+       
+<hr width="100%" size="2"><br>
+  Pour pouvoir tester vos classes, vous pourrez utiliser la classe suivante 
+:<br>
+ <br>
+ 
+<div align="Center">   
+<table width="90%" cellspacing="2" cellpadding="2" border="0">
+     <tbody>
+       <tr>
+         <td valign="Top" bgcolor="#ffffcc"> <tt>public class Application 
+{<br>
+ &nbsp;&nbsp;&nbsp; static final int PIQUE=0, TREFLE=1, CARREAU=2, COEUR=3;<br>
+ &nbsp;&nbsp;&nbsp; static final int AS=12, ROI=11, DAME=10, VALET=9, DIX=8, 
+NEUF=7, HUIT=6 SEPT=5,SIX=4, CINQ=3, QUATRE=2, TROIS=1, DEUX=0;<br>
+ &nbsp;&nbsp;&nbsp; <br>
+ &nbsp;&nbsp;&nbsp; public static void main(String args[]) {<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println();<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Main m0=new Main(new Carte[] {<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; new Carte(AS,PIQUE),new 
+Carte(AS,COEUR),new Carte(AS,TREFLE),<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; new Carte(VALET,PIQUE),new 
+Carte(VALET,COEUR)});<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println(m0);<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println(m0.extraire());<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Main m1=new Main(new Carte[] {<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; new Carte(AS,PIQUE),new 
+Carte(ROI,PIQUE),new Carte(DAME,PIQUE),<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; new Carte(VALET,PIQUE),new 
+Carte(DIX,PIQUE)});<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println(m1);<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println(m1.extraire());<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Main m2=new Main(new Carte[] {<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; new Carte(AS,PIQUE),new 
+Carte(CINQ,PIQUE),new Carte(QUATRE,PIQUE),<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; new Carte(TROIS,PIQUE),new 
+Carte(DEUX,PIQUE)});<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println(m2);<br>
+ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println(m2.extraire());<br>
+ &nbsp;&nbsp;&nbsp; }<br>
+ }</tt><br>
+         </td>
+       </tr>
+           
+  </tbody>   
+</table>
+   </div>
+ <br>
+ Vous devriez alors obtenir le résultat suivant :<br>
+ <br>
+ 
+<table width="90%" cellspacing="2" cellpadding="2" border="0" bgcolor="#000000" align="Center">
+   <tbody>
+     <tr>
+       <td valign="Top"><font color="#cccccc"><big><tt>C:\java\coo\td6\&gt; 
+java Application</tt></big><big><tt><br>
+ Main&nbsp;&nbsp;&nbsp; (as de pique,as de coeur,as de trefle,valet de pique,valet 
+de coeur)<br>
+  Full (Brelan (as de pique,as de coeur,as de trefle),Paire (valet de pique,valet 
+de coeur))<br>
+  Main&nbsp;&nbsp;&nbsp; (as de pique,roi de pique,dame de pique,valet de 
+pique,10 de pique)<br>
+  Quinte flush (as de pique,roi de pique,dame de pique,valet de pique,10
+de pique)<br>
+  Main&nbsp;&nbsp;&nbsp; (as de pique,5 de pique,4 de pique,3 de pique,2
+de pique)<br>
+  Quinte flush (5 de pique,4 de pique,3 de pique,2 de pique,as de pique)</tt></big></font><br>
+       </td>
+     </tr>
+   
+  </tbody> 
+</table>
+ <br>
+ 
+<hr width="100%" size="2"><br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+  <br>
+     
+
+
+</body></html>
